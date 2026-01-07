@@ -90,3 +90,16 @@ export const fakebooks=[
     "available": false
   }
 ]
+
+export const intializeBooks=()=>{
+  localStorage.setItem("booksdata", JSON.stringify(fakebooks));
+}
+export const AddBooks=(newBook)=>{
+  console.log(newBook);
+  
+  console.log(fakebooks);
+  const updatedBooks=JSON.parse(localStorage.getItem("booksdata")) || [];
+  updatedBooks.push(newBook);
+  // localStorage.removeItem("booksdata");
+  localStorage.setItem("booksdata", JSON.stringify(updatedBooks));
+}

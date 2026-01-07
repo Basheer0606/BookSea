@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "./signup.css";
 import { useState } from "react";
-export default function Signup({childdata}) {
-    console.log(localStorage.getItem("users"));
+export default function Signup({ childdata }) {
+    console.log(childdata);
+    // console.log(localStorage.getItem("users"));
     const [username, setUsername]=useState("");
     const [password, setPassword]=useState("");
     const [email, setEmail]=useState("");
@@ -23,7 +24,13 @@ export default function Signup({childdata}) {
 
     return(
         <>
+        <div className="overlay">
+            <img src="./Assets/sea.png" alt="sea-image" className="sea-image" />
             <form>
+                <div className="logo-container">
+                    <img src="../Assets/dolphin.png" alt="dolphin" className="dolphin-image-logo" />
+                    <p className="logoName">BookSea</p>
+                </div>
                 <h2>Signup</h2>
 
                 <div>
@@ -53,13 +60,13 @@ export default function Signup({childdata}) {
 
                 <div className="signup-container">
                     <p>Already have an account?</p>
-                    <Link className="login" to="/login" onClick={() => childdata(true)}>
+                    <Link className="login" to="/login" onClick={() => childdata && childdata(true)}>
                     Login
                     </Link>
                 </div>
                 <button type="submit" className="submit" onClick={(e)=>handleSignup(e)}>Signup</button>
             </form>
-
+        </div>
         </>
     )
 }

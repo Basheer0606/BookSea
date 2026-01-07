@@ -12,21 +12,20 @@
   backdrop-filter: blur(8px);
 }
 
-/* LOGO AREA */
 .navbar > div:first-child {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* LOGO IMAGE */
+
 .dolphin-image {
   width: 60px;
   height: auto;
   animation: swim 6s ease-in-out infinite;
 }
 
-/* LOGO TEXT */
+
 .logoName {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
@@ -35,14 +34,14 @@
   letter-spacing: 1px;
 }
 
-/* LINKS */
+
 .links {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* LINK STYLE */
+
 .links a {
   text-decoration: none;
   font-size: 16px;
@@ -53,7 +52,7 @@
   transition: all 0.3s ease;
 }
 
-/* HOVER EFFECT */
+
 .links a:hover {
   background: #eaf3ff;
   color: #0b5ed7;
@@ -65,7 +64,7 @@
   color: white;
 }
 
-/* ANIMATION */
+
 @keyframes swim {
   0% {
     transform: translateX(0px);

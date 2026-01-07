@@ -1,21 +1,31 @@
 import Navbar from "./navbar";
 import ManageCard from "./Cards/managecard";
-import { fakebooks } from "./Details/fakebooks";
+// import { fakebooks } from "./Details/fakebooks";
+import {intializeBooks} from "./Details/fakebooks";
 import { useEffect, useState } from "react";
 import "./manage.css";
 import Addingcard from "./Cards/addingcard";
+
 export default function Manage(){
+    // console.log(users);
+    useEffect(()=>{
+        intializeBooks();
+    },[]);
+    const fakebooks=JSON.parse(localStorage.getItem("booksdata")) || [];
     const [search,setSearch]=useState("");
     const [books,setBooks]=useState(fakebooks);
     const [mngCard,setMngCrd]=useState(false);
     const getDataFromChild=(childData)=>{
         setMngCrd(!childData);
-        console.log(mngCard);
+        const updatedBooks = JSON.parse(localStorage.getItem("booksdata")) || [];
+        setBooks(updatedBooks);
     }
-    console.log(mngCard);
+    useEffect(()=>{
+        setBooks(fakebooks);
+    }, []);
     useEffect(()=>{
         const timer=setTimeout(()=>{
-            const booksfiltering = fakebooks.filter((book)=>{
+            const booksfiltering = books.filter((book)=>{
                 return(
                     book.title.toLowerCase().includes(search.toLowerCase()) ||
                     book.author.toLowerCase().includes(search.toLowerCase()) ||
@@ -46,11 +56,13 @@ export default function Manage(){
                 mngCard===true ? <Addingcard sendData={getDataFromChild} /> : <></>
             }
             {
-                books.map(x=>{
-                    return(
-                        <ManageCard key={x.id}  bookdetails={x} />
-                    )
-                })
+                <div className="manage-grid">
+                    {
+                        books.map(x => (
+                            <ManageCard key={x.id} bookdetails={x} />
+                        ))
+                    }
+                </div>
             }
         </>
     )

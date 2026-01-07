@@ -6,7 +6,10 @@ import { Link, Navigate, redirect } from "react-router-dom";
 // import { users } from "./Details/logindetails";
 import { useNavigate} from "react-router-dom";
 export default function Login() {
+    console.log(localStorage.getItem("users"));
+    console.log(localStorage.getItem("booksdata"));
     const users=JSON.parse(localStorage.getItem("users")) || [];
+    console.log(users);
     const checkLogin=(username,password)=>{
         for(let i=0;i<users.length;i++){
             if(users[i].username===username && users[i].password===password){
@@ -35,12 +38,13 @@ export default function Login() {
         }
         e.preventDefault();
     }
-    const datafromchild=(childData)=>{
-        setSignin(childData);
+    const datafromchild= (value) =>{
+        setSignin(value);
     }
     return (
         <>
             <div className="overlay">
+                <img src="./Assets/sea.png" alt="Image" className="sea-image" />
             {
                 signin ? (
                     <form action="" >
